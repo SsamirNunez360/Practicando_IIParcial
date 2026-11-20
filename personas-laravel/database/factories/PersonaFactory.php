@@ -5,20 +5,18 @@ namespace Database\Factories;
 use App\Models\Persona;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Persona>
- */
 class PersonaFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Persona::class;
+
     public function definition(): array
     {
         return [
-            //
+            'dni' => fake()->unique()->numerify('#############'),
+            'nombre' => fake()->name(),
+            'fecha_nacimiento' => fake()
+                ->dateTimeBetween('-70 years', '-18 years')
+                ->format('Y-m-d'),
         ];
     }
 }

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
+            $table->string('dni', 13)->unique();
+            $table->string('nombre', 100);
+            $table->date('fecha_nacimiento');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('personas');
